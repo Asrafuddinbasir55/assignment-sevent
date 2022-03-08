@@ -12,12 +12,13 @@ const getReportedPosts = () => {
 };
 
 const isLiked = (id) => {
-    return likedPostsId?.length && !!likedPostsId.includes(id);
+    return likedPostsId ?.length && !!likedPostsId.includes(id);
 };
 
 const addToLiked = (id) => {
-    likedPostsId.push(id); 
-    showPosts(posts);
+  console.log(id);
+  likedPostsId.push(id); 
+  showPosts(posts);
 };
 
 const reportPost = (id) => {
@@ -27,6 +28,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
+  console.log(text);
     return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
@@ -51,18 +53,25 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
+  console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
+
+  //  let comments;
+  //  if (post.comments.length > 100) {
+  //     console.log('basi ase');
+  //  }
+
     div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
-                  <a
-                    href="https://github.com/ProgrammingHero1"
-                    target="_blank"
-                    class="post__avatar"
-                  >
-                    <img src="${post.image.username}" alt="User Picture" />
+                <a
+                href="https://github.com/ProgrammingHero1"
+                target="_blank"
+                  class="post__avatar"
+                >
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -151,7 +160,7 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
-  document.getElementById( "reported" ).innerHTML = ''
+  document.getElementById( "reported" ).innerHTML = '';
     const reportedPosts = getReportedPosts();
     reportedPosts.forEach((post) => {
         const div = createPost(post);
@@ -166,3 +175,7 @@ const loadPosts = async () =>{
 }
 
 loadPosts();
+
+
+
+// ${post.comments?.text}
