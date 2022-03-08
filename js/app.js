@@ -58,11 +58,6 @@ const createPost = (post) => {
     const div = document.createElement( "article" );
     div.classList.add( "post" );
 
-  //  let comments;
-  //  if (post.comments.length > 100) {
-  //     console.log('basi ase');
-  //  }
-
     div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
@@ -152,6 +147,7 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  document.getElementById( "liked" ).innerHTML = ''
     const likedPosts = getLikedPosts();
     likedPosts.forEach((post) => {
         const div = createPost(post);
@@ -178,4 +174,3 @@ loadPosts();
 
 
 
-// ${post.comments?.text}
